@@ -9,7 +9,7 @@ import datetime
 
 
 def post(request):
-""" This posts the content on main page """
+	""" This posts the content on main page """
 	if request.method == "POST":
 		form = MainForm(request.POST,request.FILES)
 		if form.is_valid():
