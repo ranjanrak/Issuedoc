@@ -1,0 +1,18 @@
+from django.conf.urls import url
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+app_name = 'helpdoc'
+
+urlpatterns = [
+	url(r'^$',views.index, name='home'),
+    url(r'^index/$', views.index, name='home'),
+    url(r'^post/$',views.post, name='post'),
+    url(r'^detail/(?P<name>[\w-]+)/$', views.detail,name='detail'),
+    url(r'^creapost/(?P<name>[\w-]+)/$',views.creapost, name='creapost'),
+    url(r'^edit/(?P<id>[0-9]{2})/$',views.editmain, name='editmain'),
+    url(r'^editdetail/(?P<id>[0-9]{2})/$',views.editdetail, name='editdetail'),
+    url(r'^issue/$',views.issue, name='issue'),
+    url(r'^creaissue/$',views.creaissue, name='creaissue'),
+
+    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
