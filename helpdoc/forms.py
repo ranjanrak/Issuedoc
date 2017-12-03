@@ -18,3 +18,10 @@ class IssueForm(ModelForm):
     class Meta:
         model = Issue
         fields = ['date','detail','rectify']                
+
+class UserForm(forms.ModelForm):
+	password =forms.CharField(widget=forms.PasswordInput)
+
+	class Meta:
+		model = User
+		fields =['username','email','password']        

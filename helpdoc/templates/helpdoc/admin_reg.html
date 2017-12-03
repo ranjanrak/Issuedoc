@@ -1,0 +1,50 @@
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+<style>
+#login-page{
+    width: 700px;
+    border: 25px;
+    margin: 25px;
+position: absolute;
+   left:25%;
+   top: 10%;}
+</style>
+
+<body class ="blue">  
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+    <div class="row">
+        
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>Admin creator form</h4>            
+                    {% if error_message %}
+                        <h4><strong>{{ error_message }}</strong></h4>
+                    {% endif %}
+                    <form class="login-form" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ field.errors }}</span>
+        </div>
+        <label class="control-label col-sm-2" for="title">{{ field.label_tag }}</label>
+        <div class="col-sm-10">{{ field }}</div>
+    </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>

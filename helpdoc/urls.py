@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^editdetail/(?P<id>[0-9]{2})/$',views.editdetail, name='editdetail'),
     url(r'^issue/$',views.issue, name='issue'),
     url(r'^creaissue/$',views.creaissue, name='creaissue'),
+    url(r'^admin_user/$',views.admin_user, name='admin_user'),
+    url(r'^admin_register/$',views.admin_register, name='admin_register'),
 
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

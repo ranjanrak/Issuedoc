@@ -3,7 +3,7 @@ from .models import Main, Content
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.http import HttpResponse
-from .forms import ContentForm, MainForm,IssueForm
+from .forms import ContentForm, MainForm,IssueForm,UserForm
 from .models import Main, Content,Issue
 import datetime
 
@@ -45,7 +45,7 @@ def creapost(request,name):
 			image = request.FILES['image']
 			store=Content(title=title,detail=detail,image=image,main_title=name)
 			store.save()
-			return redirect('https://helpdoc.herokuapp.com/detail/name/') 
+			return redirect('https://helpdoc.herokuapp.com/detail/index/') 
 	else:
 		form =ContentForm()		
 
@@ -111,4 +111,33 @@ def creaissue(request):
 	else:
 		form =IssueForm()		
 
-	return render(request, 'helpdoc/creaissue.html', {'form': form})		
+	return render(request, 'helpdoc/creaissue.html', {'form': form})
+
+def admin_user(request):
+        if request.method == "POST":
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)        
+            if user is not None:
+                login(request, user)  
+                return redirect('https://helpdoc.herokuapp.com/index/')
+
+            else:    
+                return render(request, 'helpdoc/login.html',{'error_message': 'Ask Rakesh to create admin account'})   
+
+        else:   
+            return render(request, 'helpdoc/login.html')
+
+def admin_register(request):
+        form = UserForm(request.POST or None)
+        if form.is_valid():
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+            return render(request, 'helpdoc/login.html')
+        context = {
+            "form": form,
+        }
+        return render(request, 'helpdoc/admin_reg.html',{'form': form,} )            			
