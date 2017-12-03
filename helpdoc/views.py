@@ -145,5 +145,5 @@ def admin_register(request):
 
 def logout(request):
 	sys.setrecursionlimit(10000)
-    logout(request) 
-    return render(request, 'helpdoc/login.html')                    			
+	logout(request)
+	return render(request, 'helpdoc/login.html')                     			
