@@ -140,4 +140,8 @@ def admin_register(request):
         context = {
             "form": form,
         }
-        return render(request, 'helpdoc/admin_reg.html',{'form': form,} )            			
+        return render(request, 'helpdoc/admin_reg.html',{'form': form,} )
+
+def logout(request):
+        logout(request) 
+        return render(request, 'helpdoc/login.html',{})                    			

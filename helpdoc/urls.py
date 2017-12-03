@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^creaissue/$',views.creaissue, name='creaissue'),
     url(r'^admin_user/$',views.admin_user, name='admin_user'),
     url(r'^admin_register/$',views.admin_register, name='admin_register'),
+    url(r'^logout/$',views.logout, name='logout'),
 
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
