@@ -9,7 +9,7 @@ import datetime
 
 
 def post(request):
-
+""" This posts the content on main page """
 	if request.method == "POST":
 		form = MainForm(request.POST,request.FILES)
 		if form.is_valid():
@@ -25,16 +25,18 @@ def post(request):
 	return render(request, 'helpdoc/post.html', {'form': form})	            	
 
 def index(request):
-	#This is the main landing page, shows all the main content stored
+	"""This is the main landing page, shows all the main content stored """
 	main=Main.objects.all()
 	issue=Issue.objects.all().last()
 	return render(request, 'helpdoc/index.html',{'main':main,'issue':issue})	
 
 def detail(request,name):
+	"""Detail page within content on index headline """
 	content=Content.objects.filter(main_title=name)
 	return render(request, 'helpdoc/detail.html',{'name':name,'content':content})
 
 def creapost(request,name):
+	""" Create new post in detail of any index headline """
 	if request.method == "POST":
 		form = ContentForm(request.POST,request.FILES)
 		if form.is_valid():
@@ -50,6 +52,7 @@ def creapost(request,name):
 	return render(request, 'helpdoc/creapost.html', {'form': form,'name':name})		
 
 def editmain(request,id):
+	""" Edit headline content """
 	data=Main.objects.filter(id=id).first()
 	if request.method == "POST":
 		form = MainForm(request.POST,request.FILES)
@@ -70,6 +73,7 @@ def editmain(request,id):
 
 
 def editdetail(request,id):
+	""" Edit content of detail subject under index headline """
 	data=Content.objects.filter(id=id).first()
 	if request.method == "POST":
 		form = ContentForm(request.POST,request.FILES)
@@ -89,10 +93,12 @@ def editdetail(request,id):
 	return render(request, 'helpdoc/editdetail.html', {'form': form,'data':data,'id':id})	
 
 def issue(request):
+	""" Showing the list of issue faced on specific date that have effected client """
 	issue=Issue.objects.all()
 	return render(request,'helpdoc/issue.html',{'issue':issue})
 
 def creaissue(request):
+	""" Creating log on issue faced on specific date that have effected client """
 	if request.method == "POST":
 		form = IssueForm(request.POST)
 		if form.is_valid():
