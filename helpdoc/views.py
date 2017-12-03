@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from .forms import ContentForm, MainForm,IssueForm,UserForm
 from .models import Main, Content,Issue
 import datetime
+import sys
 
 
 def post(request):
@@ -143,5 +144,6 @@ def admin_register(request):
         return render(request, 'helpdoc/admin_reg.html',{'form': form,} )
 
 def logout(request):
-        logout(request) 
-        return render(request, 'helpdoc/login.html')                    			
+	sys.setrecursionlimit(10000)
+    logout(request) 
+    return render(request, 'helpdoc/login.html')                    			
