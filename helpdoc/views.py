@@ -18,7 +18,7 @@ def post(request):
 			image = request.FILES['image']
 			store=Main(title=title,detail=detail,image=image)
 			store.save()
-			return redirect('http://127.0.0.1:8000/index/') 
+			return redirect('https://helpdoc.herokuapp.com/index/') 
 	else:
 		form =MainForm()		
 
@@ -43,7 +43,7 @@ def creapost(request,name):
 			image = request.FILES['image']
 			store=Content(title=title,detail=detail,image=image,main_title=name)
 			store.save()
-			return redirect('http://127.0.0.1:8000/detail/name/') 
+			return redirect('https://helpdoc.herokuapp.com/detail/name/') 
 	else:
 		form =ContentForm()		
 
@@ -62,7 +62,7 @@ def editmain(request,id):
 			data.image=image
 			data.save()
 			
-			return redirect('http://127.0.0.1:8000/index/') 
+			return redirect('https://helpdoc.herokuapp.com/index/') 
 	else:
 		form =MainForm()	
 
@@ -82,7 +82,7 @@ def editdetail(request,id):
 			data.image=image
 			data.save()
 			
-			return redirect('http://127.0.0.1:8000/index/') 
+			return redirect('https://helpdoc.herokuapp.com/index/') 
 	else:
 		form =ContentForm()	
 
@@ -100,7 +100,7 @@ def creaissue(request):
 			detail = form.cleaned_data['detail']
 			store=Issue(date=datetime.datetime.now(),detail=detail,rectify=rectify)
 			store.save()
-			return redirect('http://127.0.0.1:8000/issue/') 
+			return redirect('https://helpdoc.herokuapp.com/issue/') 
 	else:
 		form =IssueForm()		
 
