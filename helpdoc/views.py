@@ -144,4 +144,4 @@ def admin_register(request):
 
 def logout(request):
         logout(request) 
-        return render(request, 'helpdoc/login.html',{})                    			
+        return render(request, 'helpdoc/login.html')                    			
