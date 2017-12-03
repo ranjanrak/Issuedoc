@@ -21,7 +21,7 @@ class Content(models.Model):
 	time=models.DateTimeField(null=True)	
 
 class Issue(models.Model):
-	""" This is for storing faced on anyday """
-	date=models.DateTimeField()
+	""" This is for storing issue faced on anyday """
+	date=models.CharField(max_length=100)
 	detail=models.CharField(max_length=200)
 	rectify=models.CharField(max_length=50)
