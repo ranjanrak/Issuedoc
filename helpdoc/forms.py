@@ -17,4 +17,4 @@ class ContentForm(ModelForm):
 class IssueForm(ModelForm):
     class Meta:
         model = Issue
-        fields = ['detail','rectify']                
+        fields = ['date','detail','rectify']                
