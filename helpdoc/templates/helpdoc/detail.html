@@ -34,7 +34,7 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            {% if admin == '1' %}
+            {% if admin == "yes" %}
             <li class="nav-item">
               <a class="nav-link" href="https://helpdoc.herokuapp.com/creapost/{{name}}/">Add</span></a>
             </li>
@@ -62,7 +62,7 @@
                 <a href="#">{{value.title}}</a>
               </h4>
               <p class="card-text">{{value.detail}}</p>
-              {% if admin == '1' %}
+              {% if admin == "yes" %}
               {% if value.id > 9 %}
               <button><a href="https://helpdoc.herokuapp.com/editdetail/{{value.id}}/">Edit</a></button>
               {% else %}
