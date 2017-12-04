@@ -159,4 +159,4 @@ def logout(request):
 
 def pi_index(request):
 	issue=Issue.objects.all().last()
-	return render(request,'helpdoc/pi_index.html','issue':issue)	                     			
+	return render(request,'helpdoc/pi_index.html',{'issue':issue})	                     			
