@@ -51,7 +51,7 @@ def creapost(request,name):
 			image = request.FILES['image']
 			store=Content(title=title,detail=detail,image=image,main_title=name)
 			store.save()
-			return redirect('https://helpdoc.herokuapp.com/detail/index/') 
+			return redirect('https://helpdoc.herokuapp.com/index/')
 	else:
 		form =ContentForm()		
 
@@ -152,5 +152,10 @@ def admin_register(request):
         }
         return render(request, 'helpdoc/admin_reg.html',{'form': form,} )
 
+@login_required(login_url='/admin_user/')
 def logout(request):
-	return render(request, 'helpdoc/login.html')                     			
+	return render(request, 'helpdoc/login.html')
+
+
+def pi_index(request):
+	return render(request,'helpdoc/pi_index.html')	                     			
