@@ -102,9 +102,7 @@ def editdetail(request,id):
 def issue(request):
 	""" Showing the list of issue faced on specific date that have effected client """
 	issue=Issue.objects.all()
-	if request.user:
-		admin="yes"
-	return render(request,'helpdoc/issue.html',{'issue':issue,'admin':admin})
+	return render(request,'helpdoc/issue.html',{'issue':issue,})
 
 @login_required(login_url='/admin_user/')
 def creaissue(request):
