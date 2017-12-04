@@ -41,7 +41,7 @@ h1{
             <li class="nav-item">
               <a class="nav-link" href="https://helpdoc.herokuapp.com/issue/">Issue_log</a>
             </li>
-            {% if admin==1 %}
+            {% if admin == 1 %}
             <li class="nav-item">
               <a class="nav-link" href="https://helpdoc.herokuapp.com/post/">Create</a>
             </li>
@@ -72,7 +72,7 @@ h1{
                 <a href="https://helpdoc.herokuapp.com/detail/{{content.title|cut:" "}}/">{{content.title}}</a>
               </h4>
               <p class="card-text">{{content.detail}}</p>
-              {% if admin==1 %}
+              {% if admin == 1 %}
               {% if content.id > 9 %}
               <button><a href="https://helpdoc.herokuapp.com/edit/{{content.id}}/">Edit</a></button>
               {% else %}
