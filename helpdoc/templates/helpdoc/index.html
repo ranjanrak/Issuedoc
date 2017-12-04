@@ -21,6 +21,20 @@
 h2{
   background-color: yellow;
 }
+.button1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
 </style>
   <body>
 
@@ -74,9 +88,9 @@ h2{
               <p class="card-text">{{content.detail}}</p>
               {% if admin == "yes" %}
               {% if content.id > 9 %}
-              <button><a href="https://helpdoc.herokuapp.com/edit/{{content.id}}/">Edit</a></button>
+              <a href="https://helpdoc.herokuapp.com/edit/{{content.id}}/"><button class="button1">Edit</button></a>
               {% else %}
-              <button><a href="https://helpdoc.herokuapp.com/edit/0{{content.id}}/">Edit</a></button>
+              <a href="https://helpdoc.herokuapp.com/edit/0{{content.id}}/"><button class="button1">Edit</button></a>
               {% endif %}
               {% endif %}
             </div>
