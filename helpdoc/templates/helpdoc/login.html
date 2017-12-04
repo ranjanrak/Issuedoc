@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Simple login form</title>
+  <title>Admin login</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
@@ -104,7 +104,7 @@ html {
   <div class="container">
   <div class="login">
   	<h1 class="login-heading">
-      {{error_message}}
+      {{error_message}}<br><br>
       <strong>Welcome Admin,</strong> Please login.</h1>
       <form method="post" action="{% url 'helpdoc:admin_user' %}">
         <input type="text" name="username" placeholder="Username" required="required" class="input-txt" />

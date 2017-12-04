@@ -2,12 +2,13 @@ from django.shortcuts import render
 from .models import Main, Content
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .forms import ContentForm, MainForm,IssueForm,UserForm
 from .models import Main, Content,Issue
 import datetime
 
-
+@login_required(login_url='/admin_user/')
 def post(request):
 	""" This posts the content on main page """
 	if request.method == "POST":
@@ -28,13 +29,18 @@ def index(request):
 	"""This is the main landing page, shows all the main content stored """
 	main=Main.objects.all()
 	issue=Issue.objects.all().last()
-	return render(request, 'helpdoc/index.html',{'main':main,'issue':issue})	
+	if request.user:
+		admin=1
+	return render(request, 'helpdoc/index.html',{'main':main,'issue':issue,'admin':admin})	
 
 def detail(request,name):
 	"""Detail page within content on index headline """
 	content=Content.objects.filter(main_title=name)
-	return render(request, 'helpdoc/detail.html',{'name':name,'content':content})
+	if request.user:
+		admin=1
+	return render(request, 'helpdoc/detail.html',{'name':name,'content':content,'admin':admin})
 
+@login_required(login_url='/admin_user/')
 def creapost(request,name):
 	""" Create new post in detail of any index headline """
 	if request.method == "POST":
@@ -49,8 +55,9 @@ def creapost(request,name):
 	else:
 		form =ContentForm()		
 
-	return render(request, 'helpdoc/creapost.html', {'form': form,'name':name})		
+	return render(request, 'helpdoc/creapost.html', {'form': form,'name':name})	
 
+@login_required(login_url='/admin_user/')
 def editmain(request,id):
 	""" Edit headline content """
 	data=Main.objects.filter(id=id).first()
@@ -71,7 +78,7 @@ def editmain(request,id):
 
 	return render(request, 'helpdoc/editmain.html', {'form': form,'data':data,'id':id})
 
-
+@login_required(login_url='/admin_user/')
 def editdetail(request,id):
 	""" Edit content of detail subject under index headline """
 	data=Content.objects.filter(id=id).first()
@@ -95,8 +102,11 @@ def editdetail(request,id):
 def issue(request):
 	""" Showing the list of issue faced on specific date that have effected client """
 	issue=Issue.objects.all()
-	return render(request,'helpdoc/issue.html',{'issue':issue})
+	if request.user:
+		admin=1
+	return render(request,'helpdoc/issue.html',{'issue':issue,'admin':admin})
 
+@login_required(login_url='/admin_user/')
 def creaissue(request):
 	""" Creating log on issue faced on specific date that have effected client """
 	if request.method == "POST":
@@ -123,7 +133,7 @@ def admin_user(request):
                 return redirect('https://helpdoc.herokuapp.com/index/')
 
             else:    
-                return render(request, 'helpdoc/login.html',{'error_message': 'Ask Rakesh to create admin account'})   
+                return render(request, 'helpdoc/login.html',{'error_message': 'Please check your username and password'})   
 
         else:   
             return render(request, 'helpdoc/login.html')
