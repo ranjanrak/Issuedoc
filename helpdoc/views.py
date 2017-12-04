@@ -30,14 +30,14 @@ def index(request):
 	main=Main.objects.all()
 	issue=Issue.objects.all().last()
 	if request.user:
-		admin=1
+		admin='1'
 	return render(request, 'helpdoc/index.html',{'main':main,'issue':issue,'admin':admin})	
 
 def detail(request,name):
 	"""Detail page within content on index headline """
 	content=Content.objects.filter(main_title=name)
 	if request.user:
-		admin=1
+		admin='1'
 	return render(request, 'helpdoc/detail.html',{'name':name,'content':content,'admin':admin})
 
 @login_required(login_url='/admin_user/')
@@ -103,7 +103,7 @@ def issue(request):
 	""" Showing the list of issue faced on specific date that have effected client """
 	issue=Issue.objects.all()
 	if request.user:
-		admin=1
+		admin='1'
 	return render(request,'helpdoc/issue.html',{'issue':issue,'admin':admin})
 
 @login_required(login_url='/admin_user/')
