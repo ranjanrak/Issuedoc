@@ -55,7 +55,7 @@ h2{
             <li class="nav-item">
               <a class="nav-link" href="https://helpdoc.herokuapp.com/issue/">Issue_log</a>
             </li>
-            {% if admin == "yes" %}
+            {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="https://helpdoc.herokuapp.com/post/">Create</a>
             </li>
@@ -86,7 +86,7 @@ h2{
                 <a href="https://helpdoc.herokuapp.com/detail/{{content.title|cut:" "}}/">{{content.title}}</a>
               </h4>
               <p class="card-text">{{content.detail}}</p>
-              {% if admin == "yes" %}
+              {% if user.is_authenticated %}
               {% if content.id > 9 %}
               <a href="https://helpdoc.herokuapp.com/edit/{{content.id}}/"><button class="button1">Edit</button></a>
               {% else %}
