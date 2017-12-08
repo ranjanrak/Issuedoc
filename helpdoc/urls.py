@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^admin_register/$',views.admin_register, name='admin_register'),
     url(r'^logout/$',views.logout, name='logout'),
     url(r'^pi_index/$',views.pi_index, name='pi_index'),
+    url(r'^report_category/$',views.report_category, name='report_category'),
 
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

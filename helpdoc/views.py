@@ -45,7 +45,7 @@ def creapost(request,name):
 			title = form.cleaned_data['title']
 			detail = form.cleaned_data['detail']
 			image = request.FILES['image']
-			store=Content(title=title,detail=detail,image=image,main_title=name)
+			store=Content(title=title,detail=detail,image=image,main_title=name,report=0)
 			store.save()
 			return redirect('https://helpdoc.herokuapp.com/index/')
 	else:
@@ -153,4 +153,17 @@ def logout(request):
 
 def pi_index(request):
 	issue=Issue.objects.all().last()
-	return render(request,'helpdoc/pi_index.html',{'issue':issue})	                     			
+	return render(request,'helpdoc/pi_index.html',{'issue':issue})
+
+def report_category(request):
+    if request.method == 'GET':
+        cat_id = request.GET['category_id']
+
+    if cat_id:
+        cat = Content.objects.get(id=cat_id)
+        if cat:
+            report = cat.report + 1
+            cat.report =  report
+            cat.save()
+
+    return HttpResponse(report)				                     			
