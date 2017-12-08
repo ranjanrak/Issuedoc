@@ -29,16 +29,12 @@ def index(request):
 	"""This is the main landing page, shows all the main content stored """
 	main=Main.objects.all()
 	issue=Issue.objects.all().last()
-	if request.user:
-		admin="yes"
-	return render(request, 'helpdoc/index.html',{'main':main,'issue':issue,'admin':admin})	
+	return render(request, 'helpdoc/index.html',{'main':main,'issue':issue})	
 
 def detail(request,name):
 	"""Detail page within content on index headline """
 	content=Content.objects.filter(main_title=name)
-	if request.user:
-		admin="yes"
-	return render(request, 'helpdoc/detail.html',{'name':name,'content':content,'admin':admin})
+	return render(request, 'helpdoc/detail.html',{'name':name,'content':content})
 
 @login_required(login_url='/admin_user/')
 def creapost(request,name):

@@ -18,7 +18,8 @@ class Content(models.Model):
 	image=models.ImageField()
 	detail=models.TextField()
 	username=models.CharField(max_length=100,null=True)
-	time=models.DateTimeField(null=True)	
+	time=models.DateTimeField(null=True)
+	report=models.IntegerField()	
 
 class Issue(models.Model):
 	""" This is for storing issue faced on anyday """
