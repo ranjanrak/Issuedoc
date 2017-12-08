@@ -126,7 +126,7 @@
   $(document).on("click",'#report',function(){
     var catid;
     catid = $(this).attr("data-catid");
-    $.get('http://helpdoc.herokuapp.com/report_category/', {category_id: catid}, function(data){
+    $.get('/report_category/', {category_id: catid}, function(data){
                $('#report').html(data);
     });
 });
