@@ -152,7 +152,11 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
-
+#contact{
+  position: absolute;
+  right: 05%;
+  top: 12%;
+}
 
 </style>
 
@@ -183,6 +187,17 @@ td.text-right {
 <div class="table-title">
 <h3>Day Wise issue list</h3>
 </div>
+<form id="contact" action="{% url 'helpdoc:issue' %}" method="post" enctype="multipart/form-data">
+<h4>Select by Specific Tag</h4>
+<select name="tag">
+<option value="All">All</option>
+<option value="Q issue">Q issue</option>
+<option value="kite issue">Kite</option>
+<option value="Human error">Human error</option>
+<option value="TR">TR/Omnesys</option>
+</select>
+<input value="search" input type="submit"/>
+</form>
 <table class="table-fill">
 <thead>
 <tr>

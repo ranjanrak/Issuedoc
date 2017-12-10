@@ -97,8 +97,15 @@ def editdetail(request,id):
 
 def issue(request):
 	""" Showing the list of issue faced on specific date that have effected client """
-	issue=Issue.objects.all()
-	return render(request,'helpdoc/issue.html',{'issue':issue,})
+	if request.method == "POST":
+		tag=request.POST['tag']
+		if tag == "All":
+			issue=Issue.objects.all()
+		else:	
+			issue=Issue.objects.filter(tag=tag)
+	else:	
+		issue=Issue.objects.all()
+	return render(request,'helpdoc/issue.html',{'issue':issue})
 
 @login_required(login_url='/admin_user/')
 def creaissue(request):
