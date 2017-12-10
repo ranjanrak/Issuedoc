@@ -26,3 +26,4 @@ class Issue(models.Model):
 	date=models.CharField(max_length=100)
 	detail=models.CharField(max_length=200)
 	rectify=models.CharField(max_length=50)
+	tag=models.CharField(max_length=50)

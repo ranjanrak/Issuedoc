@@ -187,6 +187,7 @@ td.text-right {
 <thead>
 <tr>
 <th class="text-left">Date</th>
+<th class="text-left">Tag</th>
 <th class="text-left">Issue</th>
 <th class="text-left">Rectify time</th>
 </tr>
@@ -195,6 +196,7 @@ td.text-right {
 {% for content in issue %}  
 <tr>
 <td class="text-left">{{content.date}}</td>
+<td class="text-left">{{content.tag}}</td>
 <td class="text-left">{{content.detail}}</td>
 <td class="text-left">{{content.rectify}}</td>
 </tr>

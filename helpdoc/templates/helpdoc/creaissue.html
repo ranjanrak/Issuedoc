@@ -72,7 +72,7 @@ input[type="submit"]:hover, button:hover {
     line-height: 1.5;
   }
   textarea {
-    height: 10em;
+    height: 5em;
   }
   input[type="submit"], button {
     margin-left: 26.3736%;
@@ -115,9 +115,16 @@ input[type="submit"]:hover, button:hover {
 <div class ="position"
 <section id="contact-form">
   <form id="contact" action="{% url 'helpdoc:creaissue' %}" method="post" enctype="multipart/form-data">
-    <label for ="id_date"><span>Date</span><textarea name="date" placeholder="Enter the date of issue" required id="id_date"></textarea></label>
+    <label for ="id_date"><span>Date</span><textarea name="date" placeholder="Enter the date of issue" required id="id_date"></textarea></label></label>
     <label for ="id_`"><span>Detail</span><textarea name="detail" placeholder="Describe issue in bit detail" required id="id_detail"></textarea></label>
     <label for="id_rectify"><span>Rectify time</span><input name="rectify" type="text" placeholder="Write rectify time e.g:next day,today afternoon" required id="id_rectify"/></label>
+    <label for="id_tag"><span>Issue Tag</span><select name="tag">
+    <option value="Q issue">Q issue</option>
+    <option value="kite issue">Kite</option>
+    <option value="Human error">Human error</option>
+    <option value="TR">TR/Omnesys</option>
+  </select>
+    </label>
     <input value="submit" input type="submit"/>
   </form>
 </section>
