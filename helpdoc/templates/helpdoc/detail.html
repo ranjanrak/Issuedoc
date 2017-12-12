@@ -86,8 +86,8 @@
               <a href="https://helpdoc.herokuapp.com/editdetail/0{{value.id}}/"><button class='button1'>Edit</button></a>
               {% endif %}
               {% endif %}
-              <button class="report" data-catid="{{value.id}}" class="btn btn-danger" type="button"><p id="added">
-              Report({{value.report}})</p>
+              <button id="report" data-catid="{{value.id}}" class="btn btn-danger" type="button">
+              Report({{value.report}})
               </button>
             </div>
           </div>
@@ -123,11 +123,11 @@
 
     </div>
     <script>
-  $(document).on("click",'.report',function(){
+  $(document).on("click",'#report',function(){
     var catid;
     catid = $(this).attr("data-catid");
     $.get('/report_category/', {category_id: catid}, function(data){
-               $('#added').html(data);
+               $('#report').html(data);
     });
 });
 </script>
