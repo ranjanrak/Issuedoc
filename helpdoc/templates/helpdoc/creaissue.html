@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <style type="text/css">
 html {
   font: 300 100%/1.5 Ubuntu, sans-serif;
@@ -116,17 +117,67 @@ input[type="submit"]:hover, button:hover {
 <section id="contact-form">
   <form id="contact" action="{% url 'helpdoc:creaissue' %}" method="post" enctype="multipart/form-data">
     <label for ="id_date"><span>Date</span><textarea name="date" placeholder="Enter the date of issue" required id="id_date"></textarea></label></label>
-    <label for ="id_`"><span>Detail</span><textarea name="detail" placeholder="Describe issue in bit detail" required id="id_detail"></textarea></label>
-    <label for="id_rectify"><span>Rectify time</span><input name="rectify" type="text" placeholder="Write rectify time e.g:next day,today afternoon" required id="id_rectify"/></label>
-    <label for="id_tag"><span>Issue Tag</span><select name="tag">
+    <label for ="id_detail"><span>Detail</span><textarea name="detail" placeholder="Please describe issue in bit detail" required id="id_detail"></textarea></label>
+    <label for="id_rectify"><span>Issue period</span><input name="rectify" type="text" placeholder="Specify complete period e.g: 10AM-1PM" required id="id_rectify"/></label>
+    <label for ="id_resolution"><span>Resolution</span><textarea name="resolution" placeholder="How issue was rectified e.g:Holding file was re-imported" required id="id_resolution"></textarea></label>
+    <label for="id_tag"><span>Main Tag</span><select name="tag" id="tag">
+    <option>Please Select</option>
     <option value="Q issue">Q issue</option>
     <option value="kite issue">Kite</option>
     <option value="Human error">Human error</option>
     <option value="TR">TR/Omnesys</option>
-  </select>
+    </select>
+    </label>
+    <label for="id_tag2"><span>Underlying Tag</span><select name="tag2" id="tag2">
+    <option>Please choose from above</option>
+    </select>
+    </label>
+    <label for="id_effected"><span>Platform effected</span><select name="effected">
+    <option value="All">All Platform</option>
+    <option value="kite">Only Kite</option>
+    <option value="pi">Only Pi</option>
+    <option value="pi">Only Q</option>
+    </select>
     </label>
     <input value="submit" input type="submit"/>
   </form>
 </section>
 </div>
+<script>
+$(function() {
+$("#tag").change(function() {
+
+  var $dropdown = $(this);
+
+  $.getJSON("jsondata", function(data) {
+  
+    var key = $dropdown.val();
+    var vals = [];
+              
+    switch(key) {
+      case 'Q issue':
+        vals = data.Q.split(",");
+        break;
+      case 'kite issue':
+        vals = data.kite.split(",");
+        break;
+      case 'Human error':
+        vals = data.Human.split(",");
+        break;
+      case 'TR':
+        vals = data.TR.split(",");
+        break;    
+    }
+    
+    var $tag2 = $("#tag2");
+    $tag2.empty();
+    $.each(vals, function(creaissue,value) {
+      $tag2.append("<option>" + value + "</option>");
+    });
+
+  });
+});
+});
+
+</script>
 </html>

@@ -4,7 +4,7 @@
   <title>Issue List</title>
   <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
   <link href="/static/helpdoc/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!-- Custom styles for this template -->
   <link href="/static/helpdoc/vendor/css/2-col-portfolio.css" rel="stylesheet">
 </head>
@@ -185,18 +185,15 @@ td.text-right {
 </div>
 <form id="contact" action="{% url 'helpdoc:issue' %}" method="post" enctype="multipart/form-data">
 <h4>Select by Tag</h4>
-<select name="tag">
+<select name="tag" id="tag">
 <option value="All">All</option>
 <option value="Q issue">Q issue</option>
 <option value="kite issue">Kite</option>
 <option value="Human error">Human error</option>
 <option value="TR">TR/Omnesys</option>
 </select>
-<select name="tag2">
-<option value="All">All</option>
-<option value="T1">T1 Holdings/avg</option>
-<option value="T2">T2 Holdings/avg</option>
-<option value="Segment">Segment change</option>
+<select name="tag2" id="tag2">
+<option >Please select from first</option>
 </select>
 <input value="search" input type="submit"/>
 </form>
@@ -208,6 +205,7 @@ td.text-right {
 <th class="text-left">Issue</th>
 <th class="text-left">Issue Period</th>
 <th class="text-left">Effected Platform</th>
+<th class="text-left">Resolution step</th>
 
 </tr>
 </thead>
@@ -222,5 +220,44 @@ td.text-right {
 {% endfor %}
 </tbody>
 </table>  
+<script>
+$(function() {
+$("#tag").change(function() {
 
+  var $dropdown = $(this);
+
+  $.getJSON("jsondata", function(data) {
+  
+    var key = $dropdown.val();
+    var vals = [];
+              
+    switch(key) {
+      case 'Q issue':
+        vals = data.Q.split(",");
+        break;
+      case 'kite issue':
+        vals = data.kite.split(",");
+        break;
+      case 'Human error':
+        vals = data.Human.split(",");
+        break;
+      case 'TR':
+        vals = data.TR.split(",");
+        break;
+      case 'All':
+        vals = data.All.split(",");
+        break;      
+    }
+    
+    var $tag2 = $("#tag2");
+    $tag2.empty();
+    $.each(vals, function(creaissue,value) {
+      $tag2.append("<option>" + value + "</option>");
+    });
+
+  });
+});
+});
+
+</script>
 </body>

@@ -3,7 +3,7 @@ from .models import Main, Content
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .forms import ContentForm, MainForm,IssueForm,UserForm
 from .models import Main, Content,Issue
 import datetime
@@ -164,6 +164,7 @@ def pi_index(request):
 	return render(request,'helpdoc/pi_index.html',{'issue':issue})
 
 def report_category(request):
+	""" Incrementing the issue count """
     if request.method == 'GET':
         cat_id = request.GET['category_id']
 
@@ -174,4 +175,15 @@ def report_category(request):
             cat.report =  report
             cat.save()
 
-    return HttpResponse(report)				                     			
+    return HttpResponse(report)
+
+def jsondata(request):
+	""" Sending the JSON data for Ajax call """
+	data={
+	'Q':'T1 Holdings/avg,T2 Holdings/avg,Segment change,Settlement Holiday',
+	'kite':'Holdings,Market watch,Orders/Positions,Charts',
+	'Human':'RMS,DP fileupload ',
+	'TR':'RMS process,fileupload',
+	'All':'All'
+	}
+	return JsonResponse(data)    				                     			
