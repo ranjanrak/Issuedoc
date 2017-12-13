@@ -17,7 +17,7 @@ class ContentForm(ModelForm):
 class IssueForm(ModelForm):
     class Meta:
         model = Issue
-        fields = ['date','detail','rectify','tag',]                
+        fields = ['date','detail','rectify','tag','tag2','resolution','effected']                
 
 class UserForm(forms.ModelForm):
 	password =forms.CharField(widget=forms.PasswordInput)

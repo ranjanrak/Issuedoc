@@ -117,7 +117,10 @@ def creaissue(request):
 			rectify = form.cleaned_data['rectify']
 			detail = form.cleaned_data['detail']
 			tag = form.cleaned_data['tag']
-			store=Issue(date=date,detail=detail,rectify=rectify,tag=tag)
+			tag2 = form.cleaned_data['tag2']
+			effected = form.cleaned_data['effected']
+			resolution = form.cleaned_data['resolution']
+			store=Issue(date=date,detail=detail,rectify=rectify,tag=tag,resolution=resolution,effected=effected,tag2=tag2)
 			store.save()
 			return redirect('https://helpdoc.herokuapp.com/issue/') 
 	else:
