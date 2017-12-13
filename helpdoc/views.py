@@ -164,7 +164,6 @@ def pi_index(request):
 	return render(request,'helpdoc/pi_index.html',{'issue':issue})
 
 def report_category(request):
-	""" Incrementing the issue count """
     if request.method == 'GET':
         cat_id = request.GET['category_id']
 
