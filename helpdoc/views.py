@@ -99,10 +99,11 @@ def issue(request):
 	""" Showing the list of issue faced on specific date that have effected client """
 	if request.method == "POST":
 		tag=request.POST['tag']
+		tag2=request.POST['tag2']
 		if tag == "All":
 			issue=Issue.objects.all()
 		else:	
-			issue=Issue.objects.filter(tag=tag)
+			issue=Issue.objects.filter(tag=tag,tag2=tag2)
 	else:	
 		issue=Issue.objects.all()
 	return render(request,'helpdoc/issue.html',{'issue':issue})
