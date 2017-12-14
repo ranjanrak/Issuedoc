@@ -152,7 +152,12 @@ td.text-right {
   right: 05%;
   top: 05%;
 }
-
+#count{
+  position: absolute;
+  left: 10%;
+  top: 10%; 
+  background-color:#FFFF00 ;
+}
 
 </style>
 
@@ -221,7 +226,8 @@ td.text-right {
 </tr>
 {% endfor %}
 </tbody>
-</table>  
+</table>
+<h3 id="count">Total-{{ issue.count }}</h3>  
 <script>
 $(function() {
 $("#tag").change(function() {
