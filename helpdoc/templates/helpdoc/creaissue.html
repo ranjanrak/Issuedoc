@@ -116,10 +116,10 @@ input[type="submit"]:hover, button:hover {
 <div class ="position"
 <section id="contact-form">
   <form id="contact" action="{% url 'helpdoc:creaissue' %}" method="post" enctype="multipart/form-data">
-    <label for ="id_date"><span>Date</span><textarea name="date" placeholder="Enter the date of issue" required id="id_date"></textarea></label></label>
     <label for ="id_detail"><span>Detail</span><textarea name="detail" placeholder="Please describe issue in bit detail" required id="id_detail"></textarea></label>
     <label for="id_rectify"><span>Issue period</span><input name="rectify" type="text" placeholder="Specify complete period e.g: 10AM-1PM" required id="id_rectify"/></label>
     <label for ="id_resolution"><span>Resolution</span><textarea name="resolution" placeholder="How issue was rectified e.g:Holding file was re-imported" required id="id_resolution"></textarea></label>
+    <label for ="id_date"><span>Date</span><input type="date" name="date" required id="id_date"/></label>
     <label for="id_tag"><span>Main Tag</span><select name="tag" id="tag">
     <option>Please Select</option>
     <option value="Q issue">Q issue</option>
