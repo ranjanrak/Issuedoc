@@ -184,7 +184,7 @@ def jsondata(request):
 	""" Sending the JSON data for Ajax call """
 	data={
 	'Q':'T1 Holdings/avg,T2 Holdings/avg,Segment change,Settlement Holiday',
-	'kite':'Holdings,Market watch,Orders/Positions,Charts',
+	'kite':'Holdings,Market watch,Orders,Positions,Charts,Holdings/Orders/Positions,Orders/Positions,All',
 	'Human':'RMS,DP fileupload ',
 	'TR':'RMS process,fileupload',
 	'All':'All'
