@@ -96,16 +96,23 @@ def editdetail(request,id):
 	return render(request, 'helpdoc/editdetail.html', {'form': form,'data':data,'id':id})	
 
 def issue(request):
-	""" Showing the list of issue faced on specific date that have effected client """
+	""" Showing the list of issue faced on specific date  """
 	if request.method == "POST":
 		tag=request.POST['tag']
 		tag2=request.POST['tag2']
+		date=request.POST['date']
+		date1=request.POST['date1']
 		if tag == "All":
-			issue=Issue.objects.order_by('date')
-		else:	
-			issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('date')
+			issue=Issue.objects.order_by('-date')
+			if date:
+				issue=Issue.objects.filter(date__range=[date,date1])	
+		else:
+			if date:	
+				issue=Issue.objects.filter(tag=tag,date__range=[date,date1]).order_by('-date')
+			else:
+				issue=Issue.objects.filter(tag=tag).order_by('-date')
 	else:	
-		issue=Issue.objects.order_by('date')
+		issue=Issue.objects.order_by('-date')
 	return render(request,'helpdoc/issue.html',{'issue':issue})
 
 @login_required(login_url='/admin_user/')

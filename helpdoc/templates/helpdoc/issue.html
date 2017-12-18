@@ -19,7 +19,7 @@ body {
 }
 
 div.table-title {
-   display: block;
+  display: block;
   margin: auto;
   max-width: 600px;
   padding:5px;
@@ -50,7 +50,11 @@ div.table-title {
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
+  position: relative;
+  top: 10%;
 }
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;}
  
 th {
   color:#D5DDE5;
@@ -158,6 +162,10 @@ td.text-right {
   top: 10%; 
   background-color:#FFFF00 ;
 }
+#manage{
+  width:20%;
+  height:23px;
+}
 
 </style>
 
@@ -189,8 +197,9 @@ td.text-right {
 <h3>Day Wise issue list</h3>
 </div>
 <form id="contact" action="{% url 'helpdoc:issue' %}" method="post" enctype="multipart/form-data">
-<h4>Select by Tag</h4>
 <select name="tag" id="tag">
+  <input type="date" name="date" id="manage" />
+<input type="date" name="date1" id="manage" />
 <option value="All">All</option>
 <option value="Q issue">Q issue</option>
 <option value="kite issue">Kite</option>
