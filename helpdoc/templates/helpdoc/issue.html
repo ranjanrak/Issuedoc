@@ -194,12 +194,10 @@ td.text-right {
       </div>
     </nav>
 <div class="table-title">
-<h3>Day Wise issue list</h3>
-</div>
 <form id="contact" action="{% url 'helpdoc:issue' %}" method="post" enctype="multipart/form-data">
-<select name="tag" id="tag">
-  <input type="date" name="date" id="manage" />
+<input type="date" name="date" id="manage" />
 <input type="date" name="date1" id="manage" />
+<select name="tag" id="tag">
 <option value="All">All</option>
 <option value="Q issue">Q issue</option>
 <option value="kite issue">Kite</option>
@@ -210,6 +208,7 @@ td.text-right {
 <option >Please select from first</option>
 </select>
 <input value="search" input type="submit"/>
+</div>
 </form>
 <table class="table-fill">
 <thead>
