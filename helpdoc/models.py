@@ -24,10 +24,10 @@ class Content(models.Model):
 class Issue(models.Model):
 	""" This is for storing issue faced on anyday """
 	date=models.DateField()
-	detail=models.CharField(max_length=200)
+	detail=models.CharField(max_length=500)
 	rectify=models.CharField(max_length=50)
 	tag=models.CharField(max_length=50)
 	tag2=models.CharField(max_length=50)
 	effected=models.CharField(max_length=50)
-	resolution=models.CharField(max_length=200)
+	resolution=models.CharField(max_length=500)
 
