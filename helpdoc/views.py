@@ -195,7 +195,7 @@ def jsondata(request):
 	'kite':'Holdings,Login,Market watch,Orders,Positions,Charts,Holdings/Orders/Positions,Orders/Positions,RMS,All',
 	'Pi':'Holdings,Login,Market watch,Orders,Positions,Charts,All ',
 	'Nest':'Holdings,login,Orders,Positions,All',
-	'kite/Pi/Nest':'Holdings,Orders,Positions,All',
+	'Main':'Holdings,Orders,Positions,All',
 	'All':'All'
 	}
 	return JsonResponse(data)    				                     			
