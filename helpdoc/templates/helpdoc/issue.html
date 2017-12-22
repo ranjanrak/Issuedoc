@@ -55,7 +55,6 @@ th {
   font-weight: 100;
   padding:15px;
   text-align:left;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
 }
 
@@ -89,14 +88,6 @@ tr:last-child {
   border-bottom:none;
 }
  
-tr:nth-child(odd) td {
-  background:#EBEBEB;
-}
- 
-tr:nth-child(odd):hover td {
-  background:#4E5066;
-}
-
 tr:last-child td:first-child {
   border-bottom-left-radius:3px;
 }
@@ -106,7 +97,7 @@ tr:last-child td:last-child {
 }
  
 td {
-  background:#FFFFFF;
+  background:#ebebeb00;
   padding:10px;
   text-align:left;
   vertical-align:middle;
@@ -121,7 +112,10 @@ td:last-child {
 th.text-left {
   text-align: left;
 }
-
+td.text-left1 {
+  text-align: left;
+  background-color:#E9967A;
+}
 th.text-center {
   text-align: center;
 }
@@ -222,9 +216,19 @@ td.text-right {
 </thead>
 <tbody class="table-hover">
 {% for content in issue %}  
-<tr>
+{% if content.critical == "High" %}
+<tr> 
+<td class="text-left1" >{{content.date}}</td>
+<td class="text-left1">{{content.tag}}-{{content.tag2}}</td>
+<td class="text-left1">{{content.detail}}</td>
+<td class="text-left1">{{content.rectify}}</td>
+<td class="text-left1">{{content.effected}}</td>
+<td class="text-left1">{{content.resolution}}</td>
+</tr>
+{% endif %}
+<tr> 
 <td class="text-left">{{content.date}}</td>
-<td class="text-left">{{content.tag}}-{{content.tag2}}-{{content.tag3}} </td>
+<td class="text-left">{{content.tag}}-{{content.tag2}}</td>
 <td class="text-left">{{content.detail}}</td>
 <td class="text-left">{{content.rectify}}</td>
 <td class="text-left">{{content.effected}}</td>

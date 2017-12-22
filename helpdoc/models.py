@@ -31,4 +31,5 @@ class Issue(models.Model):
 	tag3=models.CharField(max_length=50)
 	effected=models.CharField(max_length=50)
 	resolution=models.CharField(max_length=500)
+	critical=models.CharField(max_length=50)
 
