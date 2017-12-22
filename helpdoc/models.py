@@ -28,6 +28,7 @@ class Issue(models.Model):
 	rectify=models.CharField(max_length=50)
 	tag=models.CharField(max_length=50)
 	tag2=models.CharField(max_length=50)
+	tag3=models.CharField(max_length=50)
 	effected=models.CharField(max_length=50)
 	resolution=models.CharField(max_length=500)
 

@@ -126,9 +126,10 @@ def creaissue(request):
 			detail = form.cleaned_data['detail']
 			tag = form.cleaned_data['tag']
 			tag2 = form.cleaned_data['tag2']
+			tag3 = form.cleaned_data['tag3']
 			effected = form.cleaned_data['effected']
 			resolution = form.cleaned_data['resolution']
-			store=Issue(date=date,detail=detail,rectify=rectify,tag=tag,resolution=resolution,effected=effected,tag2=tag2)
+			store=Issue(date=date,detail=detail,rectify=rectify,tag=tag,resolution=resolution,effected=effected,tag2=tag2,tag3=tag3)
 			store.save()
 			return redirect('https://helpdoc.herokuapp.com/issue/') 
 	else:
@@ -190,10 +191,11 @@ def report_category(request):
 def jsondata(request):
 	""" Sending the JSON data for Ajax call """
 	data={
-	'Q':'T1 Holdings/avg,T2 Holdings/avg,Segment change,Settlement Holiday',
-	'kite':'Holdings,Market watch,Orders,Positions,Charts,Holdings/Orders/Positions,Orders/Positions,All',
-	'Human':'RMS,DP fileupload ',
-	'TR':'RMS process,fileupload',
+	'Q':'T1 Holdings/avg,T2 Holdings/avg,Position avg,Settlement Holiday,Others',
+	'kite':'Holdings,Login,Market watch,Orders,Positions,Charts,Holdings/Orders/Positions,Orders/Positions,RMS,All',
+	'Pi':'Holdings,Login,Market watch,Orders,Positions,Charts,All ',
+	'Nest':'Holdings,login,Orders,Positions,All',
+	'Kite/Pi/Nest':'Holdings,Orders,Positions,All',
 	'All':'All'
 	}
 	return JsonResponse(data)    				                     			
