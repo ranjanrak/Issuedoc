@@ -225,7 +225,7 @@ td.text-right {
 <td class="text-left1">{{content.effected}}</td>
 <td class="text-left1">{{content.resolution}}</td>
 </tr>
-{% endif %}
+{% else %}
 <tr> 
 <td class="text-left">{{content.date}}</td>
 <td class="text-left">{{content.tag}}-{{content.tag2}}</td>
@@ -234,6 +234,7 @@ td.text-right {
 <td class="text-left">{{content.effected}}</td>
 <td class="text-left">{{content.resolution}}</td>
 </tr>
+{% endif %}
 {% endfor %}
 </tbody>
 </table>
