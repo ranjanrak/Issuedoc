@@ -175,12 +175,18 @@ $("#tag").change(function() {
       case 'kite issue':
         vals = data.kite.split(",");
         break;
-      case 'Human error':
-        vals = data.Human.split(",");
+      case 'Pi issue':
+        vals = data.Pi.split(",");
         break;
-      case 'TR':
-        vals = data.TR.split(",");
-        break;    
+      case 'Nest issue':
+        vals = data.Nest.split(",");
+        break;
+      case 'kite/Pi/Nest':
+        vals = data.Main.split(",");
+        break;
+      case 'All':
+        vals = data.All.split(",");
+        break;      
     }
     
     var $tag2 = $("#tag2");
