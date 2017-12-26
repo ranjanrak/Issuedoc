@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 from django.contrib.auth.models import Permission, User
 
 class Main(models.Model):
@@ -23,7 +24,7 @@ class Content(models.Model):
 
 class Issue(models.Model):
 	""" This is for storing issue faced on anyday """
-	date=models.DateField()
+	date=models.DateField(blank=True, null=True,default=datetime.date.today)
 	detail=models.CharField(max_length=500)
 	rectify=models.CharField(max_length=50)
 	tag=models.CharField(max_length=50)
