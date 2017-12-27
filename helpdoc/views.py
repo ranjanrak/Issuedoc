@@ -104,7 +104,7 @@ def issue(request):
 		date1=request.POST['date2']
 		if tag == "All":
 			issue=Issue.objects.order_by('-date')
-			if date:
+			if date1:
 				issue=Issue.objects.filter(date__range=[date,date1])	
 		else:
 			if date1:	
