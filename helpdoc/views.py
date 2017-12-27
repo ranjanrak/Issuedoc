@@ -104,10 +104,10 @@ def issue(request):
 		date1=request.POST['date2']
 		if tag == "All":
 			issue=Issue.objects.order_by('-date')
-			if date1:
+			if date1 and date:
 				issue=Issue.objects.filter(date__range=[date,date1])	
 		else:
-			if date1:	
+			if date1 and date:	
 				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('-date')
 			else:
 				issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')
