@@ -100,14 +100,14 @@ def issue(request):
 	if request.method == "POST":
 		tag=request.POST['tag']
 		tag2=request.POST['tag2']
-		date=request.POST['date']
-		date1=request.POST['date1']
+		date=request.POST['date1']
+		date1=request.POST['date2']
 		if tag == "All":
 			issue=Issue.objects.order_by('-date')
 			if date:
 				issue=Issue.objects.filter(date__range=[date,date1])	
 		else:
-			if date:	
+			if date1:	
 				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('-date')
 			else:
 				issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')
