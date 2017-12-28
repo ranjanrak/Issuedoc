@@ -105,14 +105,14 @@ def issue(request):
 		if tag == "All":
 			issue=Issue.objects.order_by('-date')
 			if date:
-				issue=Issue.objects.filter(date__range=[date,datetime.date.today()]).order_by('-date')
+				issue=Issue.objects.filter(date__range=[date,datetime.date.today()]).order_by('date')
 			if date and date1:
-				issue=Issue.objects.filter(date__range=[date,date1]).order_by('-date')		
+				issue=Issue.objects.filter(date__range=[date,date1]).order_by('date')		
 		else:
 			if date:	
-				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,datetime.date.today()]).order_by('-date')
+				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,datetime.date.today()]).order_by('date')
 			if date and date1:	
-				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('-date')	
+				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('date')	
 			else:
 				issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')
 	else:	
