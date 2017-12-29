@@ -104,7 +104,7 @@ def issue(request):
 		date=request.POST['date1']
 		date1=request.POST['date2']
 		#Too many conditions are coming as per feedback
-		if tag == "All":
+		if tag == "All" and tag3 == "All":
 			issue=Issue.objects.order_by('-date')
 			if date:
 				issue=Issue.objects.filter(date__range=[date,datetime.date.today()]).order_by('date')
