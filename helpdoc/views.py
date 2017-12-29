@@ -100,21 +100,32 @@ def issue(request):
 	if request.method == "POST":
 		tag=request.POST['tag']
 		tag2=request.POST['tag2']
+		tag3=request.POST['tag3']
 		date=request.POST['date1']
 		date1=request.POST['date2']
+		#Too many conditions are coming as per feedback
 		if tag == "All":
 			issue=Issue.objects.order_by('-date')
 			if date:
 				issue=Issue.objects.filter(date__range=[date,datetime.date.today()]).order_by('date')
 			if date and date1:
-				issue=Issue.objects.filter(date__range=[date,date1]).order_by('date')		
-		else:
+				issue=Issue.objects.filter(date__range=[date,date1]).order_by('date')
+		#If tag3 input is All ,filter by tag2 and tag3 		
+		if tag != "All" and tag3 == "All":
 			if date:	
 				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,datetime.date.today()]).order_by('date')
 			if date and date1:	
 				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('date')	
 			else:
 				issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')
+
+		else:
+			if date:	
+				issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3,date__range=[date,datetime.date.today()]).order_by('date')
+			if date and date1:	
+				issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3,date__range=[date,date1]).order_by('date')	
+			else:
+				issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3).order_by('-date')
 	else:	
 		issue=Issue.objects.order_by('-date')
 	return render(request,'helpdoc/issue.html',{'issue':issue})
