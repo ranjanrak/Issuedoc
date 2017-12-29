@@ -119,7 +119,8 @@ def issue(request):
 					issue=Issue.objects.filter(tag=tag,date__range=[date,datetime.date.today()]).order_by('date')
 				if date and date1:	
 					issue=Issue.objects.filter(tag=tag,date__range=[date,date1]).order_by('date')
-			if tag2!= "All" and tag3 == "All":
+					
+			if tag!="All" and tag2!= "All" and tag3 == "All":
 				issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')		
 				if date:	
 					issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,datetime.date.today()]).order_by('date')
