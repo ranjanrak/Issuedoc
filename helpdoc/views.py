@@ -111,7 +111,7 @@ def issue(request):
 			if date and date1:
 				issue=Issue.objects.filter(date__range=[date,date1]).order_by('date')		
 		else:
-			if tag2 == "All" and tag3 == "All":
+			if tag3 == "All":
 				issue=Issue.objects.filter(tag=tag).order_by('-date')
 				if date:	
 					issue=Issue.objects.filter(tag=tag,date__range=[date,datetime.date.today()]).order_by('date')
@@ -124,7 +124,7 @@ def issue(request):
 					issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,datetime.date.today()]).order_by('date')
 				if date and date1:	
 					issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('date')
-						
+
 			else:
 				issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3).order_by('-date')
 				if date:	
@@ -213,7 +213,7 @@ def report_category(request):
 def jsondata(request):
 	""" Sending the JSON data for Ajax call """
 	data={
-	'Q':'T1 Holdings/avg,T2 Holdings/avg,Position avg,Settlement Holiday,Others',
+	'Q':'T1 Holdings/avg,T2 Holdings/avg,Position avg,Settlement Holiday,Others,All',
 	'kite':'Holdings,Login,Market watch,Orders,Positions,Charts,Holdings/Orders/Positions,Orders/Positions,All',
 	'Pi':'Holdings,Login,Market watch,Orders,Positions,Charts,All ',
 	'Nest':'Holdings,login,Orders,Positions,All',
