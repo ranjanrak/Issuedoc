@@ -109,23 +109,29 @@ def issue(request):
 			if date:
 				issue=Issue.objects.filter(date__range=[date,datetime.date.today()]).order_by('date')
 			if date and date1:
-				issue=Issue.objects.filter(date__range=[date,date1]).order_by('date')
-		#If tag3 input is All ,filter by tag2 and tag3 		
-		if tag != "All" and tag3 == "All":
-			if date:	
-				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,datetime.date.today()]).order_by('date')
-			if date and date1:	
-				issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('date')	
-			else:
-				issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')
-
+				issue=Issue.objects.filter(date__range=[date,date1]).order_by('date')		
 		else:
-			if date:	
-				issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3,date__range=[date,datetime.date.today()]).order_by('date')
-			if date and date1:	
-				issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3,date__range=[date,date1]).order_by('date')	
+			if tag2 == "All" and tag3 == "All":
+				if date:	
+					issue=Issue.objects.filter(tag=tag,date__range=[date,datetime.date.today()]).order_by('date')
+				if date and date1:	
+					issue=Issue.objects.filter(tag=tag,date__range=[date,date1]).order_by('date')	
+				else:
+					issue=Issue.objects.filter(tag=tag).order_by('-date')
+			if tag2!= "All" and tag3 == "All":		
+				if date:	
+					issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,datetime.date.today()]).order_by('date')
+				if date and date1:	
+					issue=Issue.objects.filter(tag=tag,tag2=tag2,date__range=[date,date1]).order_by('date')	
+				else:
+					issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')
 			else:
-				issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3).order_by('-date')
+				if date:	
+					issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3,date__range=[date,datetime.date.today()]).order_by('date')
+				if date and date1:	
+					issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3,date__range=[date,date1]).order_by('date')	
+				else:
+					issue=Issue.objects.filter(tag=tag,tag2=tag2,tag3=tag3).order_by('-date')		
 	else:	
 		issue=Issue.objects.order_by('-date')
 	return render(request,'helpdoc/issue.html',{'issue':issue})
@@ -208,7 +214,7 @@ def jsondata(request):
 	""" Sending the JSON data for Ajax call """
 	data={
 	'Q':'T1 Holdings/avg,T2 Holdings/avg,Position avg,Settlement Holiday,Others',
-	'kite':'Holdings,Login,Market watch,Orders,Positions,Charts,Holdings/Orders/Positions,Orders/Positions,RMS,All',
+	'kite':'Holdings,Login,Market watch,Orders,Positions,Charts,Holdings/Orders/Positions,Orders/Positions,All',
 	'Pi':'Holdings,Login,Market watch,Orders,Positions,Charts,All ',
 	'Nest':'Holdings,login,Orders,Positions,All',
 	'Main':'Holdings,Orders,Positions,All',
