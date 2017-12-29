@@ -112,7 +112,7 @@ def issue(request):
 				issue=Issue.objects.filter(tag=tag,date__range=[date,date1]).order_by('date')				
 
 		else:
-			if tag2!= "All":
+			if tag!= "All" and tag2!= "All":
 				if tag3 == "All":
 					issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')		
 					if date:	
