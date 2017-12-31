@@ -135,7 +135,7 @@ def issue(request):
 									
 	else:	
 		issue=Issue.objects.order_by('-date')
-		tag,tag2,tag3,date,date1=('' for i in range(4))
+		tag,tag2,tag3,date,date1=('' for i in range(5))
 
 	return render(request,'helpdoc/issue.html',{'issue':issue,'tag':tag,'tag3':tag3,'tag2':tag2,'date':date,'date1':date1})
 
