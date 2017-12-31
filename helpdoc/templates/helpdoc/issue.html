@@ -167,13 +167,13 @@ td.text-right {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="https://helpdoc.herokuapp.com/index/"><b>Home</b>
+              <a class="nav-link" href="https://helpdoc.herokuapp.com/index/"><b><font size="4">Home</font></b>
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'helpdoc:creaissue' %}">Create New</a>
+              <a class="nav-link" href="{% url 'helpdoc:creaissue' %}"><b><font size="4">Create New</font></b></a>
             </li>
             {% endif %}
           </ul>
