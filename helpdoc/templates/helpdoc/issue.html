@@ -160,7 +160,7 @@ td.text-right {
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Issue list</a>
+        <a class="navbar-brand" href="https://helpdoc.herokuapp.com/issue/">Issue list</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -183,24 +183,47 @@ td.text-right {
 <div class="table-title">
 <form id="contact" action="{% url 'helpdoc:issue' %}" method="post" enctype="multipart/form-data">
   <h5>Filter by:</h5>
-<input type="date" name="date1" id="manage" />
-<input type="date" name="date2" id="manage" />
+<input type="date" name="date1" id="manage" value="{{date}}"/>
+<input type="date" name="date2" id="manage" value="{{date1}}"/>
 <select name="tag" id="tag">
+{% if tag %}
+<option value={{tag}}>{{tag}}</option>
 <option value="All">All</option>
-<option value="Q issue">Q</option>
-<option value="kite issue">Kite</option>
-<option value="Pi issue">Pi</option>
-<option value="Nest issue">Nest</option>
+<option value="Q">Q</option>
+<option value="kite">Kite</option>
+<option value="Pi">Pi</option>
+<option value="Nest">Nest</option>
 <option value="kite/Pi/Nest">Kite/Pi/Nest</option>
+{% else %}
+<option value="All">All</option>
+<option value="Q">Q</option>
+<option value="kite">Kite</option>
+<option value="Pi">Pi</option>
+<option value="Nest">Nest</option>
+<option value="kite/Pi/Nest">Kite/Pi/Nest</option>
+{% endif %}
 </select>
+
 <select name="tag2" id="tag2">
+{% if tag2 %}
+<option value={{tag2}}>{{tag2}}</option>
+{% else %}   
 <option >Please select from first</option>
+{% endif %}
 </select>
 <select name="tag3" id="tag3">
+{% if tag3 %}
+<option value={{tag3}}>{{tag3}}</option>  
 <option value="All">All</option>
 <option value="Human">Human</option>
 <option value="Service">Service Provider</option>
 <option value="API">API</option>
+{% else %}
+<option value="All">All</option>
+<option value="Human">Human</option>
+<option value="Service">Service Provider</option>
+<option value="API">API</option>
+{% endif %}
 </select>
 <input value="search" input type="submit"/>
 </div>
@@ -222,7 +245,7 @@ td.text-right {
 {% if content.critical == "High" %}
 <tr> 
 <td class="text-left1" >{{content.date}}</td>
-<td class="text-left1">{{content.tag}}-{{content.tag2}}</td>
+<td class="text-left1">{{content.tag}}-{{content.tag2}}-{{content.tag3}}</td>
 <td class="text-left1">{{content.detail}}</td>
 <td class="text-left1">{{content.rectify}}</td>
 <td class="text-left1">{{content.effected}}</td>
@@ -231,7 +254,7 @@ td.text-right {
 {% else %}
 <tr> 
 <td class="text-left">{{content.date}}</td>
-<td class="text-left">{{content.tag}}-{{content.tag2}}</td>
+<td class="text-left">{{content.tag}}-{{content.tag2}}-{{content.tag3}}</td>
 <td class="text-left">{{content.detail}}</td>
 <td class="text-left">{{content.rectify}}</td>
 <td class="text-left">{{content.effected}}</td>
@@ -254,16 +277,16 @@ $("#tag").change(function() {
     var vals = [];
               
     switch(key) {
-      case 'Q issue':
+      case 'Q':
         vals = data.Q.split(",");
         break;
-      case 'kite issue':
+      case 'kite':
         vals = data.kite.split(",");
         break;
-      case 'Pi issue':
+      case 'Pi':
         vals = data.Pi.split(",");
         break;
-      case 'Nest issue':
+      case 'Nest':
         vals = data.Nest.split(",");
         break;
       case 'kite/Pi/Nest':
