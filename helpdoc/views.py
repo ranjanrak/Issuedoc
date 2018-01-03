@@ -104,22 +104,21 @@ def issue(request):
 		date=request.POST['date1']
 		date1=request.POST['date2']
 		#Too many conditions are coming as per feedback
-		if tag!="All" and tag2 == "All" and tag3 == "All":
-			issue=Issue.objects.filter(tag=tag).order_by('-date')
-			if date:	
-				issue=Issue.objects.filter(tag=tag,date__range=[date,datetime.date.today()]).order_by('date')
-			if date and date1:	
-				issue=Issue.objects.filter(tag=tag,date__range=[date,date1]).order_by('date')						
+		if tag!="All" and tag2 == "All":
+			if tag3 == "All":
+				issue=Issue.objects.filter(tag=tag).order_by('-date')
+				if date:	
+					issue=Issue.objects.filter(tag=tag,date__range=[date,datetime.date.today()]).order_by('date')
+				if date and date1:	
+					issue=Issue.objects.filter(tag=tag,date__range=[date,date1]).order_by('date')
+			else:
+				issue=Issue.objects.filter(tag=tag,tag3=tag3).order_by('-date')
+				if date:	
+					issue=Issue.objects.filter(tag=tag,tag3=tag3,date__range=[date,datetime.date.today()]).order_by('date')
+				if date and date1:	
+					issue=Issue.objects.filter(tag=tag,tag3=tag3,date__range=[date,date1]).order_by('date')								
 
 		else:
-			if tag!="All" and tag2 == "All":
-				if tag3!= "All":
-					issue=Issue.objects.filter(tag=tag,tag3=tag3).order_by('-date')
-					if date:	
-						issue=Issue.objects.filter(tag=tag,tag3=tag3,date__range=[date,datetime.date.today()]).order_by('date')
-					if date and date1:	
-						issue=Issue.objects.filter(tag=tag,tag3=tag3,date__range=[date,date1]).order_by('date')
-
 			if tag!= "All" and tag2!= "All":
 				if tag3 == "All":
 					issue=Issue.objects.filter(tag=tag,tag2=tag2).order_by('-date')		
