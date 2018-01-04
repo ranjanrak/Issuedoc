@@ -33,4 +33,5 @@ class Issue(models.Model):
 	effected=models.CharField(max_length=50)
 	resolution=models.CharField(max_length=500)
 	critical=models.CharField(max_length=50)
+	user=models.CharField(max_length=100)
 
