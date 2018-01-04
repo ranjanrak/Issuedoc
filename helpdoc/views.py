@@ -181,7 +181,7 @@ def admin_user(request):
                 return redirect('https://helpdoc.herokuapp.com/index/')
 
             else:    
-                return render(request, 'helpdoc/login.html',{'error_message': 'Please check your username and password'})   
+                return render(request, 'helpdoc/login.html',{'error_message': 'Please check entered username and password'})   
 
         else:   
             return render(request, 'helpdoc/login.html')
