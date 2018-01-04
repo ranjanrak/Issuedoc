@@ -93,8 +93,9 @@ def editdetail(request,id):
 	else:
 		form =ContentForm()	
 
-	return render(request, 'helpdoc/editdetail.html', {'form': form,'data':data,'id':id})	
-
+	return render(request, 'helpdoc/editdetail.html', {'form': form,'data':data,'id':id})
+		
+@login_required(login_url='/admin_user/')
 def issue(request):
 	""" Showing the list of issue faced on specific date  """
 	if request.method == "POST":
