@@ -94,7 +94,7 @@ def editdetail(request,id):
 		form =ContentForm()	
 
 	return render(request, 'helpdoc/editdetail.html', {'form': form,'data':data,'id':id})
-		
+
 @login_required(login_url='/admin_user/')
 def issue(request):
 	""" Showing the list of issue faced on specific date  """
@@ -201,7 +201,8 @@ def admin_register(request):
         return render(request, 'helpdoc/admin_reg.html',{'form': form,} )
 
 @login_required(login_url='/admin_user/')
-def logout(request):
+def logout_user(request):
+	logout(request)
 	return render(request, 'helpdoc/login.html')
 
 
