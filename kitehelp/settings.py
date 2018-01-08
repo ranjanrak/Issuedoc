@@ -68,7 +68,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'kitehelp.wsgi.application'
-
+SESSION_COOKIE_AGE = 36000
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -108,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SESSION_COOKIE_AGE = 60
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
