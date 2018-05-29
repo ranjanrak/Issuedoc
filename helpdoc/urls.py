@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^report_category/$',views.report_category, name='report_category'),
     url(r'^creaissue/jsondata/$',views.jsondata, name='jsondata'),
     url(r'^issue/jsondata/$',views.jsondata, name='jsodata'),
-
+    url(r'^publisher/$',views.publisher, name='publisher'),
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

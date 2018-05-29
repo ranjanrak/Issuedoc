@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>KITE Publisher Check</title>
+  <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+  <link href="/static/helpdoc/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- Custom styles for this template -->
+  <link href="/static/helpdoc/vendor/css/2-col-portfolio.css" rel="stylesheet">
+  <script src="https://kite.trade/publisher.js?v=3"></script>
+</head>
+<body>
+<!--  A link that initiates a buy (market) of the SBIN stock //-->
+<a href="#" data-kite="blwekjvno83ep8vo"
+            data-exchange="NSE"
+            data-tradingsymbol="SBIN"
+            data-transaction_type="BUY"
+            data-quantity="1"
+            data-order_type="MARKET">Buy SBI stock</a>
+
+
+<!--  A button that initiates a sell (LIMIT) of the RELIANCE stock //-->
+<button data-kite="blwekjvno83ep8vo"
+        data-exchange="NSE"
+        data-tradingsymbol="RELIANCE"
+        data-transaction_type="SELL"
+        data-quantity="1"
+        data-order_type="LIMIT"
+        data-price="1000">Buy RELIANCE</button>
+
+<!--  A button that initiates a BO of the RELIANCE stock //-->
+<button data-kite="blwekjvno83ep8vo"
+        data-exchange="NSE"
+        data-tradingsymbol="RELIANCE"
+        data-transaction_type="BUY"
+        data-quantity="1"
+        data-order_type="LIMIT"
+        data-variety="bo"
+        data-product="MIS"
+        data-price="915"
+        data-stoploss="5"
+        data-squareoff="7"
+        data-trailing_stoploss="1.5"
+        >Buy RELIANCE (Bracket Order)</button>
+
+</body>
+</html>        

@@ -233,4 +233,8 @@ def jsondata(request):
 	'Main':'All,Holdings,Orders,Positions',
 	'All':'All'
 	}
-	return JsonResponse(data)    				                     			
+	return JsonResponse(data)
+
+def publisher(request):
+	"""Daily Test for Kite Connect publisher """
+	return render(request, 'helpdoc/publisher_check.html',)	    				                     			
