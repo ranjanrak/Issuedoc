@@ -3,11 +3,35 @@
   <meta charset="utf-8" />
   <title>KITE Publisher Check</title>
 </head>
-	<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <body>
+<style type="text/css">
+h1 {
+  margin: 0;
+  color: #000000;
+  font-size: 2.5em;
+  font-weight: 300;
+  position: absolute;
+  left: 30%;
+  top: 5%;
+}
+h4{
+  border-style: solid;
+    border-color: red;
+}
+.position{
+  position: absolute;
+  left: 30%;
+  top: 20%;
+}
+
+</style>
+<h1>Kite Publisher Daily Check</h1>
+<div class='position'>  
 <!--  A link that initiates a buy (market) of the SBIN stock //-->
+<h4>SBI-MARKET</h4>
 <kite-button href="#" data-kite="blwekjvno83ep8vo"
             data-exchange="NSE"
             data-tradingsymbol="SBIN"
@@ -17,6 +41,7 @@
 
 
 <!--  A button that initiates a sell (LIMIT) of the RELIANCE stock //-->
+<h4>NSE-LIMIT</h4>
 <kite-button href="#" data-kite="blwekjvno83ep8vo"
         data-exchange="NSE"
         data-tradingsymbol="RELIANCE"
@@ -26,6 +51,7 @@
         data-price="910">Buy RELIANCE</kite-button>
 
 <!--  A button that initiates a BO of the RELIANCE stock //-->
+<h4>NSE-BO</h4>
 <kite-button href="#" data-kite="blwekjvno83ep8vo"
         data-exchange="NSE"
         data-tradingsymbol="RELIANCE"
@@ -41,6 +67,7 @@
         >Buy RELIANCE (Bracket Order)</kite-button>
 
 <!--  A button that initiates a CO of the RELIANCE stock //-->
+<h4>MIS-NSE</h4>
 <kite-button href="#" data-kite="blwekjvno83ep8vo"
         data-exchange="NSE"
         data-tradingsymbol="RELIANCE"
@@ -51,9 +78,12 @@
         data-trigger_price='913'
         >Buy RELIANCE (Cover Order)</kite-button>       
 
+<h4>Basket Order</h4>
+<kite-button href="#" onclick=mainFunction()>Basket Order</kite-button>
+
 <form method="post" id="basket-form" action="https://kite.trade/connect/basket">
-  <input type="hidden" name="blwekjvno83ep8vo" value="xxx" />
-  <input type="hidden" id="basket" name="data" value="my_basket=[{
+  <input type="hidden" name="api_key" value="blwekjvno83ep8vo" />
+  <input type="hidden" id="basket" name="data" value='[{
   "variety": "regular",
   "tradingsymbol": "INFY",
   "exchange": "NSE",
@@ -67,7 +97,7 @@
   "exchange": "NFO",
   "transaction_type": "SELL",
   "order_type": "LIMIT",
-  "price": 10550,
+  "price": 10200,
   "quantity": 1,
   "readonly": false
 },
@@ -78,21 +108,21 @@
   "transaction_type": "BUY",
   "order_type": "LIMIT",
   "product": "MIS",
-  "price": 913.15,
+  "price": 915.15,
   "quantity": 1,
   "stoploss": 5,
   "squareoff": 7,
   "trailing_stoploss": 1.5,
   "readonly": true
-}]" />
+}]'/>
 </form>
 <script>
-  document.getElementById("basket").value = my_basket;
-  document.getElementById("basket-form").submit();
+function mainFunction(){
+document.getElementById("basket-form").submit();}
 </script>
 
 
-<script src="https://kite.trade/publisher.js?v=1"></script>        
-
+<script src="https://kite.trade/publisher.js?v=3"></script>        
+</div>
 </body>
 </html>        
