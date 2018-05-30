@@ -23,7 +23,7 @@
         data-transaction_type="SELL"
         data-quantity="1"
         data-order_type="LIMIT"
-        data-price="1000">Buy RELIANCE</kite-button>
+        data-price="910">Buy RELIANCE</kite-button>
 
 <!--  A button that initiates a BO of the RELIANCE stock //-->
 <kite-button href="#" data-kite="blwekjvno83ep8vo"
@@ -34,11 +34,33 @@
         data-order_type="LIMIT"
         data-variety="bo"
         data-product="MIS"
-        data-price="915"
-        data-stoploss="5"
-        data-squareoff="7"
+        data-price="910"
+        data-stoploss="10"
+        data-squareoff="8"
         data-trailing_stoploss="1.5"
         >Buy RELIANCE (Bracket Order)</kite-button>
+
+<!--  A button that initiates a CO of the RELIANCE stock //-->
+<kite-button href="#" data-kite="blwekjvno83ep8vo"
+        data-exchange="NSE"
+        data-tradingsymbol="RELIANCE"
+        data-transaction_type="BUY"
+        data-quantity="1"
+        data-variety="co"
+        data-product="MIS"
+        data-trigger_price='915'
+        >Buy RELIANCE (Cover Order)</kite-button>       
+
+<form method="post" id="basket-form" action="https://kite.trade/connect/basket">
+  <input type="hidden" name="blwekjvno83ep8vo" value="xxx" />
+  <input type="hidden" id="basket" name="data" value="" />
+</form>
+
+<script>
+  document.getElementById("basket").value = your_basket;
+  document.getElementById("basket-form").submit();
+</script>
+
 
 <script src="https://kite.trade/publisher.js?v=1"></script>        
 
