@@ -53,10 +53,7 @@
 
 <form method="post" id="basket-form" action="https://kite.trade/connect/basket">
   <input type="hidden" name="blwekjvno83ep8vo" value="xxx" />
-  <input type="hidden" id="basket" name="data" value="" />
-</form>
-<script>
-my_basket=[{
+  <input type="hidden" id="basket" name="data" value="my_basket=[{
   "variety": "regular",
   "tradingsymbol": "INFY",
   "exchange": "NSE",
@@ -87,7 +84,9 @@ my_basket=[{
   "squareoff": 7,
   "trailing_stoploss": 1.5,
   "readonly": true
-}]
+}]" />
+</form>
+<script>
   document.getElementById("basket").value = my_basket;
   document.getElementById("basket-form").submit();
 </script>
