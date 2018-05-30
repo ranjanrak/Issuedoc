@@ -48,16 +48,47 @@
         data-quantity="1"
         data-variety="co"
         data-product="MIS"
-        data-trigger_price='915'
+        data-trigger_price='913'
         >Buy RELIANCE (Cover Order)</kite-button>       
 
 <form method="post" id="basket-form" action="https://kite.trade/connect/basket">
   <input type="hidden" name="blwekjvno83ep8vo" value="xxx" />
   <input type="hidden" id="basket" name="data" value="" />
 </form>
-
+my_basket=[{
+  "variety": "regular",
+  "tradingsymbol": "INFY",
+  "exchange": "NSE",
+  "transaction_type": "BUY",
+  "order_type": "MARKET",
+  "quantity": 10,
+  "readonly": false
+}, {
+  "variety": "regular",
+  "tradingsymbol": "NIFTY18JUNFUT",
+  "exchange": "NFO",
+  "transaction_type": "SELL",
+  "order_type": "LIMIT",
+  "price": 10550,
+  "quantity": 1,
+  "readonly": false
+},
+{
+  "variety": "bo",
+  "tradingsymbol": "RELIANCE",
+  "exchange": "NSE",
+  "transaction_type": "BUY",
+  "order_type": "LIMIT",
+  "product": "MIS",
+  "price": 913.15,
+  "quantity": 1,
+  "stoploss": 5,
+  "squareoff": 7,
+  "trailing_stoploss": 1.5,
+  "readonly": true
+}]
 <script>
-  document.getElementById("basket").value = your_basket;
+  document.getElementById("basket").value = my_basket;
   document.getElementById("basket-form").submit();
 </script>
 
